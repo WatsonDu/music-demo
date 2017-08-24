@@ -39,12 +39,14 @@
 }
 .tabs >li{
     width:33.33333%;
+    height:100%;
     text-align: center;
     line-height:40px;
     font-size:15px;
     display: flex;
     justify-content: center;
     align-content: center;
+    z-index:-1;
 }
 .tabs>li>.text{
     position:relative;
@@ -53,9 +55,6 @@
 .tabs >li.active{
     color:#d43c33;
 }
-.tabs>li.active>.text{
-    
-}
 .tabs >li.active>.text::after{
     content:'';
     position:absolute;
@@ -63,7 +62,7 @@
     width:100%;
     transform:scaleY(0.5);
     background:#d33a31;
-    z-index:3;
+    z-index:-1;
     left:0;
     bottom:-1px;
 }
@@ -73,3 +72,42 @@
 .tab-content > li{
     display: none;
 }
+.playlists{
+    display: block;
+    padding-top:18px;
+}
+.playlists>h2{
+    font-size:17px;
+    padding-left:9px;
+    margin-bottom: 14px;
+    height:20px;
+    line-height:20px;
+    position:relative;
+    
+}
+.playlists>h2::after{
+    content:'';
+    position:absolute;
+    left:0;
+    top:50%;
+    margin-top:-6px;
+    width:2px;
+    height:16px;
+    background: #d43c33;
+}
+.playlists>ol.albums{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    font-size: 13px;
+}
+.playlists>ol.albums>li{
+    width:33%;
+    padding-bottom:20px;
+
+}
+.playlists>ol.albums>li img{
+    width:100%;
+}
+.playlists>ol.albums>li p{
+    padding:0 6px;}
