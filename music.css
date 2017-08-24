@@ -35,10 +35,37 @@
 }
 .tabs{
     display: flex;
+    border-bottom:1px solid #cccccc;
 }
 .tabs >li{
     width:33.33333%;
     text-align: center;
+    line-height:40px;
+    font-size:15px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.tabs>li>.text{
+    position:relative;
+    padding:0 5px;
+}
+.tabs >li.active{
+    color:#d43c33;
+}
+.tabs>li.active>.text{
+    
+}
+.tabs >li.active>.text::after{
+    content:'';
+    position:absolute;
+    height:4px;
+    width:100%;
+    transform:scaleY(0.5);
+    background:#d33a31;
+    z-index:3;
+    left:0;
+    bottom:-1px;
 }
 .tab-content >li.active{
     display: block;
