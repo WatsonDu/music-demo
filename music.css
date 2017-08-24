@@ -75,6 +75,7 @@
 .playlists{
     display: block;
     padding-top:18px;
+    padding-bottom:24px;
 }
 .playlists>h2{
     font-size:17px;
@@ -100,14 +101,126 @@
     flex-wrap:wrap;
     justify-content: space-between;
     font-size: 13px;
+    position: relative;
 }
 .playlists>ol.albums>li{
     width:33%;
     padding-bottom:20px;
-
+}
+.playlists>ol.albums>li>sings{
+    position: relative;
+    padding-top:100%;
 }
 .playlists>ol.albums>li img{
     width:100%;
+    
 }
 .playlists>ol.albums>li p{
-    padding:0 6px;}
+    padding:0 6px;
+}
+.playlists>ol.albums>li>.sings>.earphone>svg{
+    width:11px;
+    height: 10px;
+    fill:#fff;
+}
+.playlists>ol.albums>li>.sings>.earphone{
+    position: absolute;
+    text-align: end;
+    right:5px;
+    top:2px;
+    z-index:3;
+    padding-right:3px;
+    color: #fff;
+    font-size:12px;
+    text-shadow:1px 0 0 rgba(0,0,0,.15)
+}
+.songs >h2{
+    font-size:17px;
+    padding-left:9px;
+    margin-bottom: 14px;
+    height:20px;
+    line-height:20px;
+    position:relative;
+}
+.songs>h2::after{
+    content:'';
+    position: absolute;
+    left:0;
+    top:50%;
+    margin-top:-6px;
+    width:2px;
+    height:16px;
+    background-color:#d33a31; 
+}
+.list{
+    padding-left:10px;
+    
+}
+.list>li{
+    padding:6px 0;
+    position:relative;
+    border-bottom:1px solid #e8e8e8;
+}
+.list>li>h3{
+    padding:6px 0;
+    font-size:17px;
+    overflow: hidden;
+    line-height: 22px;
+    margin-right: 30px;
+    margin-bottom: 2px;
+}
+.list>li>p{
+    font-size:12px;
+    color:#888;
+    overflow: hidden;
+}
+.list>li>h3>small{
+    font-size:17px;
+    color:#888;
+}
+.list>li>p>i{
+    display: inline-block;
+    width: 12px;
+    height:8px;
+    margin-right: 4px;
+    background-size:166px 77px;
+    background: url(//s3.music.126.net/m/s/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880) no-repeat;
+}
+.songs > .list > li > .playButton{
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background-position: -24px 0;
+    background:url(//i.loli.net/2017/08/24/599db480dee4c.png) no-repeat -24px 0;
+    background-size: 166px 97px;
+    position: absolute;
+    margin:16px 0;
+    right:10px;
+    top:0;
+}
+.art{
+    text-align: center;
+}
+.art>.logo{
+    padding-top:16.9%;
+
+}
+.art>.logo svg{
+    width:230px;
+    height:44px;
+}
+.art>.openMore{
+    line-height: 38px;
+    border:1px solid #d33a31;
+    border-radius:38px;
+    font-size:16px;
+    color:#d33a31;
+    margin:15px 37px 5px;
+}
+.art>p{
+    color:#888;
+    font-size:12px;
+    line-height: 16px;
+    transform: scale(.75);
+    margin-bottom: 20px;
+}
