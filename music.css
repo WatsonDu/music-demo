@@ -1,1 +1,48 @@
-
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background: #d43c33;
+    padding:0 10px;
+    height:64px;
+    position:relative;
+}
+.topbar > .logo{
+    width:142px;
+    height:25px;
+    
+}
+.topbar > a{
+    display: inline-block;
+    color:#fff;
+    font-size:15px;
+    padding:0 10px;
+    line-height:30px;
+    height:30px;
+    position:relative;
+}
+.topbar > a::after{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:200%;
+    height:200%;
+    border:1px solid #fff;
+    border-radius:50px;
+    transform: scale(0.5);
+    transform-origin:0 0;
+}
+.tabs{
+    display: flex;
+}
+.tabs >li{
+    width:33.33333%;
+    text-align: center;
+}
+.tab-content >li.active{
+    display: block;
+}
+.tab-content > li{
+    display: none;
+}
