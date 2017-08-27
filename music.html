@@ -126,52 +126,52 @@
         <ol class='list'>
         <li>
             <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="icon-sq"></i>岑宁儿-如果我是一首歌</P>
+            <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
             <div class="playButton"></div>
         </li>
         <li>
             <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="icon-sq"></i>岑宁儿-如果我是一首歌</P>
+            <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
             <div class="playButton"></div>
         </li>
         <li>
             <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="icon-sq"></i>岑宁儿-如果我是一首歌</P>
+            <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
             <div class="playButton"></div>
         </li>
         <li>
             <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="icon-sq"></i>岑宁儿-如果我是一首歌</P>
+            <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
             <div class="playButton"></div>
         </li>
         <li>
             <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="icon-sq"></i>岑宁儿-如果我是一首歌</P>
+            <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
             <div class="playButton"></div>
         </li>
         <li>
             <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="icon-sq"></i>岑宁儿-如果我是一首歌</P>
+            <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
             <div class="playButton"></div>
         </li>
         <li>
             <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="icon-sq"></i>岑宁儿-如果我是一首歌</P>
+            <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
             <div class="playButton"></div>
         </li>
         <li>
             <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="icon-sq"></i>岑宁儿-如果我是一首歌</P>
+            <P><i class="3icon-sq"></i>岑宁儿-如果我是一首歌</P>
             <div class="playButton"></div>
         </li>
         <li>
             <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="icon-sq"></i>岑宁儿-如果我是一首歌</P>
+            <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
             <div class="playButton"></div>
         </li>
         <li>
             <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="icon-sq"></i>岑宁儿-如果我是一首歌</P>
+            <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
             <div class="playButton"></div>
         </li>
         </ol>
@@ -283,16 +283,18 @@
 </body>
 <script src="./vendors/jquery.min.js"></script>
 <script src="//at.alicdn.com/t/font_395713_9nrd33b4sxv6xbt9.js"></script>
-<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
 <script>
+    console.log(2)
     $('.tabs').on('click', 'li', function (e) {
         let $li = $(e.currentTarget)
-        console.log(123)
+        
         let index = $li.index()
+        
         $li.addClass('active').siblings().removeClass('active')
         $('.tab-content').children().eq(index)
             .addClass('active').siblings().removeClass('active')
     })
-
+console.log(1)
 </script>
 </html>
