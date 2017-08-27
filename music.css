@@ -106,6 +106,7 @@
 .playlists>ol.albums>li{
     width:33%;
     padding-bottom:20px;
+    
 }
 .playlists>ol.albums>li>sings{
     position: relative;
@@ -173,12 +174,15 @@
     font-size:12px;
     color:#888;
     overflow: hidden;
+    
 }
 .list>li>h3>small{
     font-size:17px;
     color:#888;
 }
 .list>li>p>i{
+    
+    
     display: inline-block;
     width: 12px;
     height:8px;
