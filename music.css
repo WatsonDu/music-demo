@@ -5,11 +5,16 @@
     background: #d43c33;
     padding:0 10px;
     height:64px;
-    position:relative;
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:1;
 }
 .topbar > .logo{
     width:142px;
     height:25px;
+    
     
 }
 .topbar > a{
@@ -20,6 +25,7 @@
     line-height:30px;
     height:30px;
     position:relative;
+    
 }
 .topbar > a::after{
     content:'';
@@ -35,7 +41,16 @@
 }
 .tabs{
     display: flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    height:40px;
     border-bottom:1px solid #cccccc;
+    position:fixed;
+    top:64px;
+    left:0;
+    z-index:1;
+    background: #fff;
 }
 .tabs >li{
     width:33.33333%;
@@ -46,7 +61,7 @@
     display: flex;
     justify-content: center;
     align-content: center;
-    z-index:-1;
+    z-index:1;
 }
 .tabs>li>.text{
     position:relative;
@@ -65,6 +80,9 @@
     z-index:-1;
     left:0;
     bottom:-1px;
+}
+.tab-content{
+    margin-top:104px;
 }
 .tab-content >li.active{
     display: block;
@@ -181,14 +199,12 @@
     color:#888;
 }
 .list>li>p>i{
-    
-    
     display: inline-block;
     width: 12px;
     height:8px;
     margin-right: 4px;
     background-size:166px 77px;
-    background: url(//s3.music.126.net/m/s/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880) no-repeat;
+    background:url(//s3.music.126.net/m/s/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880) no-repeat;
 }
 .songs > .list > li > .playButton{
     display: inline-block;
@@ -204,6 +220,8 @@
 }
 .art{
     text-align: center;
+    background: url(//s3.music.126.net/m/s/img/recommand_bg_3x.png?f3a9aaa781c3bf3b543d129327d35fce) no-repeat center;
+    background-size: cover;
 }
 .art>.logo{
     padding-top:16.9%;
@@ -227,4 +245,178 @@
     line-height: 16px;
     transform: scale(.75);
     margin-bottom: 20px;
+}
+.tuanpian{
+    position:relative;
+    padding-top:38.9%;
+    overflow: hidden;
+    background: url(//s3.music.126.net/m/s/img/hot_music_bg_2x.jpg?f01a252389c26bcf016816242eaa6aee) no-repeat;
+    background-size: contain;
+}
+.tuanpian>.icon{
+    box-sizing:border-box;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    z-index:2;
+    padding-left: 20px;
+     position:absolute;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+}
+
+.tuanpian>.icon>.hotpage{
+    width:142px;
+    height: 67px;
+    
+    background-size: 166px 97px;
+    background:  url(https://i.loli.net/2017/08/28/59a3ab3771dc4.png) no-repeat -24px -30px;
+}
+.tuanpian>.icon>.gengxin{
+    margin-top:10px;
+    font-size:12px;
+    color:hsla(0,0%,100%,.8);
+    transform-origin:left top;
+    transform:scale(0.91)
+}
+.rege{
+    position:relative;
+    padding-left:10px;
+    
+}
+.rege>.bangdan{
+    display: flex;
+}
+.rege>.bangdan>.number-top{
+    color:#df3436;
+}
+.number{
+   display:flex;
+   align-items:center;
+    width:28px;
+    font-size:17px;
+    color:#999;
+}
+.bangdan>.geming{
+    flex:1 1 auto;
+    padding:6px 0;
+    width:0;
+}
+.bangdan>.geming>h3{
+    font-size:17px;
+}
+.bangdan>.geming>h3>small{
+    color:#888;
+    margin-left:4px;
+}
+.bangdan>.geming>p{
+    font-size:12px;
+    color:#888;
+
+}
+.bangdan>.geming>p>i{
+    display:inline-block;
+    width:12px;
+    height:8px;
+    margin-right:4px;
+    background: url(//s3.music.126.net/m/s/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880) no-repeat;
+    background-size: 166px 97px;
+}
+.bangdan>.playButton{
+   display: inline-block;
+   width:22px;
+   height:22px;
+   background-position: -24px 0;
+   background-size: 166px 97px;
+   background-image: url(//s3.music.126.net/m/s/img/index_icon_3x.png?49a82fee3e0fc602e9c8b25df2bda159);
+}
+.allsong{
+    height:55px;
+    line-height:55px;
+    text-align:center;
+}
+.allsong>p{
+    display:inline-block;
+    color:#999;
+    padding-right: 14px;
+    font-size:14px;
+}
+.sousuo{
+    background: #fbfcfd;
+}
+.kuang{
+    padding:15px 10px;
+    position:relative;
+}
+.input{
+    position: relative;
+    width:100%;
+    height:30px;
+    padding:0 30px;
+    background:#ebecec;
+    border-radius:30px;
+}
+.input>.jiandan{
+    width:100%;
+    height:30px;
+    line-height: 18px;
+    background: transparent;
+    font-size:14px;
+    color:#333;
+    border:0;
+    border-radius:0;
+}
+.input>.holder{
+    position: absolute;
+    left:30px;
+    top:5px;
+    font-size:14px;
+    color:#c9c9c9;
+    background: transparent;
+    pointer-events: none;
+}
+.tubiao{
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNiAyNiI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSIjYzljOWNhIiBkPSJNMjUuMTgxLDIzLjUzNWwtMS40MTQsMS40MTRsLTcuMzE1LTcuMzE0CgkJQzE0LjcwOSwxOS4xMDcsMTIuNDYsMjAsMTAsMjBDNC40NzcsMjAsMCwxNS41MjMsMCwxMEMwLDQuNDc3LDQuNDc3LDAsMTAsMGM1LjUyMywwLDEwLDQuNDc3LDEwLDEwYzAsMi4zNDItMC44MTEsNC40OS0yLjE2LDYuMTk1CgkJTDI1LjE4MSwyMy41MzV6IE0xMCwyYy00LjQxOCwwLTgsMy41ODItOCw4czMuNTgyLDgsOCw4YzQuNDE4LDAsOC0zLjU4Miw4LThTMTQuNDE4LDIsMTAsMnoiLz48L3N2Zz4=);
+    width:13px;
+    height:13px;
+    display: inline-block;
+    background-position: 0 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    left:0;
+    top:9px;
+    margin:0 8px;
+    vertical-align: middle;
+}
+input{
+    font:14px/1.5 Helvetica,sans-serif;
+    outline:none;
+    border:none;
+}
+.default{
+    padding:15px 10px 0;
+}
+.hotlist>h3{
+    font-size:12px;
+    line-height:12px;
+    color:#666;
+    font-weight: 400;
+}
+.hotlist>ul{
+    margin:10px 0 7px;
+}
+.hotlist>ul>.items{
+    display: inline-block;
+    height:32px;
+    margin-right:8px;
+    margin-bottom:8px;
+    padding:0 14px;
+    font-size:14px;
+    line-height: 32px;
+    color:#333;
+    border:1px solid #c9c9c9;
+    border-radius:30px;
 }
