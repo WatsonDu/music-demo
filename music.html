@@ -79,7 +79,7 @@
         <ol class="albums">
             <li>
                 <div class="sings">
-                <img src="https://i.loli.net/2017/08/24/599ec574c7ee7.jpg" alt="微信图片_20170824202331.jpg" title="微信图片_20170824202331.jpg" />
+                <img src="https://i.loli.net/2017/08/24/599ec574c7ee7.jpg" alt="微信图片_20170824202331.jpg" title="微信图片_20170824202331.jpg" >
                 <span class="earphone"><svg><use xlink:href="#icon-erji"></use></svg>100万</span>
                 <p>男生重温经典，往事等你回味</p>
                 </div>
@@ -123,57 +123,8 @@
     </div>
     <div class="songs">
         <h2>最新音乐</h2>
-        <ol class='list'>
-        <li>
-            <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
-            <div class="playButton"></div>
-        </li>
-        <li>
-            <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
-            <div class="playButton"></div>
-        </li>
-        <li>
-            <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
-            <div class="playButton"></div>
-        </li>
-        <li>
-            <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
-            <div class="playButton"></div>
-        </li>
-        <li>
-            <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
-            <div class="playButton"></div>
-        </li>
-        <li>
-            <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
-            <div class="playButton"></div>
-        </li>
-        <li>
-            <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
-            <div class="playButton"></div>
-        </li>
-        <li>
-            <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="3icon-sq"></i>岑宁儿-如果我是一首歌</P>
-            <div class="playButton"></div>
-        </li>
-        <li>
-            <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
-            <div class="playButton"></div>
-        </li>
-        <li>
-            <h3>如果我是一首歌<small>(If I were a song)</small></h3>
-            <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
-            <div class="playButton"></div>
-        </li>
+        <ol id="songs" class='list'>
+        
         </ol>
     </div>
     <div class="art">
@@ -193,6 +144,7 @@
         </div>
        
     </div>
+    <ol id="songs">
         <div class="rege">
            <div class="bangdan">
              <div class="number number-top">01</div>
@@ -373,6 +325,7 @@
             
             </div>
         </div>
+        </ol>
         <div class="allsong">
             <p>查看完整榜单 &gt</p>
         </div>
@@ -385,7 +338,7 @@
                <form class="kuang">
                    <div class="input">
                    <i class="tubiao"></i>
-                   <input type="text" class="jiandan">
+                   <input id="search"type="text" class="jiandan" placeholder value autocomplete="off">
                    <lable class="holder">搜索歌曲，歌手，专辑</lable>
                    </div>
                </form>
@@ -415,7 +368,7 @@
 </body>
 <script src="./vendors/jquery.min.js"></script>
 <script src="//at.alicdn.com/t/font_395713_9nrd33b4sxv6xbt9.js"></script>
-
+<script src="./vendors/av-min.js"></script>
 <script>
     
     $('.tabs').on('click', 'li', function (e) {
@@ -428,6 +381,51 @@
         $('.tab-content').children().eq(index)
             .addClass('active').siblings().removeClass('active')
     })
+
+</script>
+<script>
+    var APP_ID = 'oysuL2dORvTNIna81kWEojQM-gzGzoHsz';
+    var APP_KEY = 'RuAWNvvWTsPo21IHHUViSmgV';
+
+AV.init({
+  appId: APP_ID,
+  appKey: APP_KEY
+});
+let $olSongs = $('ol#songs')
+var query = new AV.Query('Song');
+query.find().then(function(results){
+    for (var i=0;i<results.length;i++){
+        let song = results[i].attributes
+        let li =`
+        <li>
+            <h3>${song.name}</h3>
+            <P><i class="#icon-sq"></i>${song.singer}</P>
+            <div class="playButton"></div>
+        </li>`
+        $olSongs.append(li)
+    }
+})
+$('input#search').on('input',function(e){
+    let $input = $(e.currentTarget)
+    let value = $input.val().trim()
+    if(value===''){return}
+    var query = new AV.Query('Song');
+    query.contains('name',value);
+    query.find().then(function(results){
+        $('#searvhResult').empty()
+        if(results.length === 0){
+            $('#searchResult').html('搜索不到')
+        }else{
+            for(var i =0;i<results.length;i++){
+                let song = results[i].attributes
+                let li = `
+                <li data-id="${song.objectId}">${song.name} - ${song.singer}</li>
+                    `
+                    $('#searchResult').append(li)
+            }
+        }
+    })
+})
 
 </script>
 </html>
