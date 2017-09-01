@@ -9,7 +9,7 @@
     width:100%;
     top:0;
     left:0;
-    z-index:1;
+    z-index:2;
 }
 .topbar > .logo{
     width:142px;
@@ -49,7 +49,7 @@
     position:fixed;
     top:64px;
     left:0;
-    z-index:1;
+    z-index:2;
     background: #fff;
 }
 .tabs >li{
@@ -126,9 +126,8 @@
     padding-bottom:20px;
     
 }
-.playlists>ol.albums>li>sings{
+.playlists>ol.albums>li>.sings{
     position: relative;
-    padding-top:100%;
 }
 .playlists>ol.albums>li img{
     width:100%;
@@ -147,7 +146,7 @@
     text-align: end;
     right:5px;
     top:2px;
-    z-index:3;
+    z-index:1;
     padding-right:3px;
     color: #fff;
     font-size:12px;
@@ -198,15 +197,17 @@
     font-size:17px;
     color:#888;
 }
-.list>li>p>i{
+.songs>.list>li>p>i{
     display: inline-block;
     width: 12px;
     height:8px;
     margin-right: 4px;
-    background-size:166px 77px;
+    
     background:url(//s3.music.126.net/m/s/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880) no-repeat;
+    background-size: 166px 97px;
 }
-.songs > .list > li > .playButton{
+
+.songs > .list > li >.playButton{
     display: inline-block;
     width: 22px;
     height: 22px;
@@ -214,7 +215,7 @@
     background:url(//i.loli.net/2017/08/24/599db480dee4c.png) no-repeat -24px 0;
     background-size: 166px 97px;
     position: absolute;
-    margin:16px 0;
+    margin:22px 0;
     right:10px;
     top:0;
 }
@@ -271,8 +272,9 @@
     width:142px;
     height: 67px;
     
-    background-size: 166px 97px;
+    
     background:  url(https://i.loli.net/2017/08/28/59a3ab3771dc4.png) no-repeat -24px -30px;
+    background-size: 166px 97px;
 }
 .tuanpian>.icon>.gengxin{
     margin-top:10px;
@@ -324,7 +326,12 @@
     background: url(//s3.music.126.net/m/s/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880) no-repeat;
     background-size: 166px 97px;
 }
-.bangdan>.playButton{
+.bangdan>.action{
+    display: flex;
+    align-items:center;
+    padding:0 10px;
+}
+.bangdan>.action>.playButton{
    display: inline-block;
    width:22px;
    height:22px;
@@ -352,6 +359,9 @@
 }
 .kuang::after{
     border-bottom:1px solid rgba(0,0,0,.1)
+}
+.kuang>.input.active>lable{
+    display: none;
 }
 .input{
     position: relative;
@@ -399,6 +409,7 @@ input{
     outline:none;
     border:none;
 }
+
 .default{
     padding:15px 10px 0;
 }
