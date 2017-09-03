@@ -469,11 +469,12 @@
             $('.holder').removeClass('active')
                 $('.close').removeClass('active')
                 $('.hotlist').removeClass('active')
+                $('#searchResult').empty()
                  return }
         var query = new AV.Query('Song');
         query.contains('name', value);
         query.find().then(function (results) {
-            $('#searchResult').empty()
+            
             // $('#search').on('input', function (e) {
            
        
