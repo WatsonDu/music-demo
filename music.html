@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="reset.css">
 <link rel="stylesheet" href="music.css">
 <link rel="stylesheet" href="//at.alicdn.com/t/font_395713_wt5r3srh7l5o2yb9.css">
+
 <body>
     <!--栏目-->
     <div class="topbar">
@@ -380,8 +381,14 @@
                    <i class="tubiao"></i>
                    <input id="search"type="text" class="jiandan" placeholder value autocomplete="off">
                    <lable class="holder">搜索歌曲，歌手，专辑</lable>
+                   <div class="close">
+                       <i class="guanbi"></i>
                    </div>
+                   </div>
+                   
                </form>
+               <div class="search-content"></div>
+               <div id="searchResult"></div>
             </div>
             <div class="default">
                 <div class="hotlist">
@@ -412,61 +419,84 @@
 <script>
     // topbar的切换
     $('.tabs').on('click', 'li', function (e) {
-    
+
         let $li = $(e.currentTarget)
-        
+
         let index = $li.index()
-        
+
         $li.addClass('active').siblings().removeClass('active')
         $('.tab-content').children().eq(index)
             .addClass('active').siblings().removeClass('active')
     })
-// input的点击
+    // input的点击
+    //显示结果
+
+    //清空按钮
+
+
+
 
 </script>
 <script>
     var APP_ID = 'oysuL2dORvTNIna81kWEojQM-gzGzoHsz';
     var APP_KEY = 'RuAWNvvWTsPo21IHHUViSmgV';
 
-AV.init({
-  appId: APP_ID,
-  appKey: APP_KEY
-});
-let $olSongs = $('ol#songs')
-var query = new AV.Query('Song');
-query.find().then(function(results){
-    for (var i=0;i<results.length;i++){
-        let song = results[i].attributes
-        let li =`
+    AV.init({
+        appId: APP_ID,
+        appKey: APP_KEY
+    });
+    let $olSongs = $('ol#songs')
+    var query = new AV.Query('Song');
+    query.find().then(function (results) {
+        for (var i = 0; i < results.length; i++) {
+            let song = results[i].attributes
+            let li = `
         <li>
             <h3>${song.name}</h3>
             <P><i class="#icon-sq"></i>${song.singer}</P>
             <div class="playButton"></div>
         </li>`
-        $olSongs.append(li)
-    }
-})
-$('input#search').on('input',function(e){
-    let $input = $(e.currentTarget)
-    let value = $input.val().trim()
-    if(value===''){return}
-    var query = new AV.Query('Song');
-    query.contains('name',value);
-    query.find().then(function(results){
-        $('#searvhResult').empty()
-        if(results.length === 0){
-            $('#searchResult').html('搜索不到')
-        }else{
-            for(var i =0;i<results.length;i++){
-                let song = results[i].attributes
-                let li = `
+            $olSongs.append(li)
+        }
+    })
+    $('input#search').on('input', function (e) {
+        let $input = $(e.currentTarget)
+         $('.holder').addClass('active')
+            $('.close').addClass('active')
+            $('.hotlist').addClass('active')
+        let value = $input.val().trim()
+        if (value === '') {
+            $('.holder').removeClass('active')
+                $('.close').removeClass('active')
+                $('.hotlist').removeClass('active')
+                 return }
+        var query = new AV.Query('Song');
+        query.contains('name', value);
+        query.find().then(function (results) {
+            $('#searchResult').empty()
+            // $('#search').on('input', function (e) {
+           
+       
+                //   }
+
+                // })
+
+                if (results.length === 0) {
+                $('#searchResult').html('搜索不到')
+
+            } else {
+                for (var i = 0; i < results.length; i++) {
+                    let song = results[i].attributes
+                    let li = `
                 <li data-id="${song.objectId}">${song.name} - ${song.singer}</li>
                     `
                     $('#searchResult').append(li)
+                }
             }
-        }
-    })
-})
+        })
+        })
+        
+
 
 </script>
 </html>

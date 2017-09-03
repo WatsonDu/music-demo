@@ -259,7 +259,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    z-index:2;
+    z-index:1;
     padding-left: 20px;
      position:absolute;
     left:0;
@@ -336,8 +336,8 @@
    width:22px;
    height:22px;
    background-position: -24px 0;
-   background-size: 166px 97px;
    background-image: url(//s3.music.126.net/m/s/img/index_icon_3x.png?49a82fee3e0fc602e9c8b25df2bda159);
+   background-size: 166px 97px;
 }
 .allsong{
     height:55px;
@@ -360,9 +360,8 @@
 .kuang::after{
     border-bottom:1px solid rgba(0,0,0,.1)
 }
-.kuang>.input.active>lable{
-    display: none;
-}
+
+
 .input{
     position: relative;
     width:100%;
@@ -390,6 +389,33 @@
     background: transparent;
     pointer-events: none;
 }
+.kuang>.input>.holder.active{
+    display: none;
+}
+.kuang>.input>.close{
+    display: none;
+}
+.kuang>.input>.close.active{
+    display: block;
+}
+.kuang>.input>.close{
+    position:absolute;
+    right:0;
+    top:0;
+    width:30px;
+    height:30px;
+    line-height: 28px;
+    text-align: center;
+}
+.kuang>.input>.close>.guanbi{
+    display: inline-block;
+    vertical-align: middle;
+    width:14px;
+    height:14px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOCAyOCI+PGcgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBmaWxsPSIjYmNiZGJkIiBkPSJNMTQsMGM3LjczMiwwLDE0LDYuMjY4LDE0LDE0YzAsNy43MzItNi4yNjgsMTQtMTQsMTQKCVMwLDIxLjczMiwwLDE0QzAsNi4yNjgsNi4yNjgsMCwxNCwweiIvPjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ViZWNlYiIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCI+PHBhdGggZD0ibTE5IDlsLTEwIDEwIi8+PHBhdGggZD0ibTkgOWwxMCAxMCIvPjwvZz48L2c+PC9zdmc+);
+
+}
+
 .tubiao{
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNiAyNiI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSIjYzljOWNhIiBkPSJNMjUuMTgxLDIzLjUzNWwtMS40MTQsMS40MTRsLTcuMzE1LTcuMzE0CgkJQzE0LjcwOSwxOS4xMDcsMTIuNDYsMjAsMTAsMjBDNC40NzcsMjAsMCwxNS41MjMsMCwxMEMwLDQuNDc3LDQuNDc3LDAsMTAsMGM1LjUyMywwLDEwLDQuNDc3LDEwLDEwYzAsMi4zNDItMC44MTEsNC40OS0yLjE2LDYuMTk1CgkJTDI1LjE4MSwyMy41MzV6IE0xMCwyYy00LjQxOCwwLTgsMy41ODItOCw4czMuNTgyLDgsOCw4YzQuNDE4LDAsOC0zLjU4Miw4LThTMTQuNDE4LDIsMTAsMnoiLz48L3N2Zz4=);
     width:13px;
@@ -409,9 +435,31 @@ input{
     outline:none;
     border:none;
 }
+.search-content{
+    border-bottom:1px solid #e8e8e8;
+}
+.search-content h3{
+    position:relative;
+    height:50px;
+    margin-left:10px;
+    padding-right: 10px;
+    font-size:15px;
+    line-height: 50px;
+    color:#507daf;
+}
+
+.search-content h3::after{
+    border-bottom:1px solid rgba(0,0,0,.1);
+}
 
 .default{
     padding:15px 10px 0;
+}
+.default>.hotlist{
+    display: block;
+}
+.default>.hotlist.active{
+    display: none;
 }
 .hotlist>h3{
     font-size:12px;
@@ -434,3 +482,4 @@ input{
     border:1px solid #c9c9c9;
     border-radius:30px;
 }
+
