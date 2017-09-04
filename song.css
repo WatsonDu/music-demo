@@ -1,25 +1,171 @@
 .page{
-    height:100%;
+    height:100vh;
 }
 .mysong{
     width:100%;
     position:relative;
     overflow: hidden;
     height:100%;
-    border: 1px solid red;
 }
-
 .mysong>.mysong-bg{
     background-image: url(https://i.loli.net/2017/09/04/59ac4a917e603.jpg);
     opacity: 1;
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: auto 100%;
-    transform: scale(1.5);
     z-index: -1;
     transition: opacity 0.3s linear;
     transform-origin: center top;
     width:100%;
     height:100%;
     position:absolute;
+    filter:blur(30px);
+    transform: scale(1.5);
+}
+.mysong>.mysong-bg::after{
+    position:absolute;
+    left:0;
+    right: 0;
+    bottom:0;
+    top:0;
+}
+.mysong-wrap{
+    position: relative;
+    padding-top:63px;
+}
+@media screen and (min-width:360px){
+.mysong-wrap{
+    padding-top:70px;
+}
+}
+@media screen and (min-width:414px){
+.mysong-wrap{
+    padding-top:80px;
+}
+}
+.mysong-wrap >.mysong-disc{
+    position:relative;
+    width:248px;
+    height:248px;
+    margin:0 auto;
+}
+@media screen and (min-width:414px){
+    .mysong-wrap >.mysong-disc{
+        width:342px;
+        height:342px;
+    }
+}
+@media screen and (min-width:360px){
+    .mysong-wrap>.mysong-disc{
+        width:296px;
+        height:296px;
+    }
+}
+.mysong-wrap>.mysong-disc::after{
+    content:"";
+    position:absolute;
+    top:-63px;
+    left:107px;
+    z-index: 5;
+    width:84px;
+    height:122px;
+    background: url(//s3.music.126.net/m/s/img/needle-ip6.png?be4ebbeb6befadfcae75ce174e7db862) no-repeat;
+    background-size: contain;
+}
+@media screen and (min-width:360px){
+    .mysong-wrap>.mysong-disc::after{
+        width:96px;
+        height:137px;
+        top:-70px;
+        left: 133px;
+        background-image: url(//s3.music.126.net/m/s/img/needle-ip6.png?be4ebbeb6befadfcae75ce174e7db862);
+    }
+}
+@media screen and (min-width:414px){
+    .mysong-wrap>.mysong-disc::after{
+        width:110px;
+        height:157px;
+        top:-80px;
+        left: 150px;
+        background-image:url(//s3.music.126.net/m/s/img/needle-plus.png?994aa910ce3e4d242eb7076620b0e502);
+    }
+}
+
+.mysong-wrap>.mysong-disc>.mysong-turn{
+    width:100%;
+    height:100%;
+}
+.mysong-wrap>.mysong-disc >.mysong-turn::before{
+    content:"";
+    position:absolute;
+    left: 0;
+    right:0;
+    top:0;
+    width:100%;
+    height:100%;
+    bottom:0;
+    z-index: 2;
+    background:  url(//s3.music.126.net/m/s/img/disc.png?d3bdd1080a72129346aa0b4b4964b75f) no-repeat ;
+    background-size: contain;
+}
+@media screen and (min-width: 360px){
+    .mysong-wrap>.mysong-disc>.mysong-turn::before{
+        background-image:url(//s3.music.126.net/m/s/img/disc-ip6.png?69796123ad7cfe95781ea38aac8f2d48);
+    }
+}
+
+@media  screen and (min-width: 414px){
+    .mysong-wrap>.mysong-disc>.mysong-turn::before{
+        background-image:url(//s3.music.126.net/m/s/img/disc-plus.png?b700b62e1971b351dcb8b8ce1c9ceea3);
+    }
+}
+.mysong-wrap>.mysong-disc>.mysong-turn::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    z-index: 3;
+    background: url(//s3.music.126.net/m/s/img/disc_light.png?2bb24f3fd11569809b817b4988f12bc7) no-repeat;
+    background-size:contain;
+    ainmation:circling 20s infinite linear;
+}
+@media screen and (min-width: 360px){
+    .mysong-wrap>.mysong-disc>.mysong-turn::after{
+        background-image:url(//s3.music.126.net/m/s/img/disc_light-ip6.png?996fc8a2bc62e1ab3f51f135fc459577);
+    }
+}
+@media screen and (min-width: 414px){
+    .mysong-wrap>.mysong-disc>.mysong-turn::after{
+        background-image:url(//s3.music.126.net/m/s/img/disc_light-ip6.png?996fc8a2bc62e1ab3f51f135fc459577);
+    }
+}
+.mysong-turn>.mysong-img img{
+    display:flex;
+    width:150px;
+    height:150px;
+    z-index: 1;
+    margin:-75px 0 0 -75px;
+    border-radius:50%;
+    overflow: hidden;
+    position:absolute;
+    left:50%;
+    top:50%;
+    background:url(//s3.music.126.net/m/s/img/disc_default.png?7c9b3adc16f5485c2bfbe8a540534188) no-repeat;
+    background-size:contain;
+}
+@media screen and (min-width: 360px){
+    .mysong-turn>.mysong-img img{
+        width:184px;
+        height:184px;
+        margin:-92px 0 0 -92px;
+    }
+}
+@media screen and (min-width:414px){
+    .mysong-turn>.mysong-img img{
+        width:212px;
+        height:212px;
+        margin:-106px 0 0 -106px;
+    }
 }

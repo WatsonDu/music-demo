@@ -474,48 +474,35 @@
             $olSongs.append(li)
         }
     })
-    
-    let timer = null
 
+    let timer = null
+    
     $('input#search').on('input', function (e) {
         if (timer) { clearTimeout(timer) }
-        
-        $('#searchResult').empty()
         let $input = $(e.currentTarget)
-        $('.holder').addClass('active')
-        $('.close').addClass('active')
-        $('.hotlist').addClass('active')
-        //$('.search-content').addClass('active')
         let value = $input.val().trim()
-        //console.log(6)
-        //console.log(timer)
-
         if (value === '') {
-            $('.holder').removeClass('active')
-            $('.close').removeClass('active')
-            $('.hotlist').removeClass('active')
-            $('.search-content').removeClass('active')
-            $('#searchResult').empty()
-            return
-        }
-        //console.log(3)
-        //console.log(timer)
+                    $('.holder').removeClass('active')
+                    $('.close').removeClass('active')
+                    $('.hotlist').removeClass('active')
+                    $('.search-content').removeClass('active')
+                    $('#searchResult').empty()
+                    return
+                }
+                $('#searchResult').empty()
+                $('.holder').addClass('active')
+                $('.close').addClass('active')
+                $('.hotlist').addClass('active')
+                $('.search-content').addClass('active')
+               // $('.search-content').text('搜索'+'value'+'');
         timer = setTimeout(function () {
-//console.log(8)
-//console.log(timer)
-           // timer = null
+             timer = null
             var query2 = new AV.Query('Song');
             query2.contains('name', value);
             var query1 = new AV.Query('Song');
             query1.contains('singer', value);
             var query = AV.Query.or(query1, query2)
-//console.log(5)
-//console.log(timer)
             query.find().then(function (results) {
-                // $('#search').on('input', function (e) {
-                //   $('#searchResult').empty()
-                // })
- //console.log(4)
                 if (results.length === 0) {
                     $('.search-content').addClass('active')
                     $('.search-content').html('搜索' + '' + value + '')
@@ -526,15 +513,14 @@
                 <li data-id="${results[i].id}">
                 <a href="./song.html?id=${results[i].id}">${song.name} - ${song.singer}</a>
         </li>
-        ` 
-        $('#searchResult').append(li)
+        `;
+         $('#searchResult').append(li)
                     }
                 }
             }, 500)
         })
     })
-
-//console.log(timer)
+     console.log(timer)
 
 </script>
 
