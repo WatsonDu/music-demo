@@ -388,7 +388,10 @@
                    
                </form>
                <div class="search-content"></div>
-               <div id="searchResult"></div>
+               
+               <div id="searchResult">
+                   <ul><li></li></ul>
+               </div>
             </div>
             <div class="default">
                 <div class="hotlist">
@@ -430,91 +433,109 @@
     })
     // input的点击
     //显示结果
-    $('.close').on('click', function () {
-        let
-    })
+
     //清空按钮
 
 
+    var close = function () {
+        $('#search').val()
+        $('.close').removeClass('active')
+        $('#searchResult').empty()
+        $('.default').show()
+        $('.search-content').removeClass('active')
+        $('.hotlist').removeClass('active')
+        $('#searchResult')[0].value = ''
+    }
+    $('.close').on('click', function () {
+        return (close())
+    })
 
 
 </script>
 <script>
-     var APP_ID = 'oysuL2dORvTNIna81kWEojQM-gzGzoHsz';
-     var APP_KEY = 'RuAWNvvWTsPo21IHHUViSmgV';
+    var APP_ID = 'oysuL2dORvTNIna81kWEojQM-gzGzoHsz';
+    var APP_KEY = 'RuAWNvvWTsPo21IHHUViSmgV';
 
-     AV.init({
-         appId: APP_ID,
-         appKey: APP_KEY
-     });
-     let $olSongs = $('ol#songs')
-     var query = new AV.Query('Song');
-     query.find().then(function (results) {
-         for (var i = 0; i < results.length; i++) {
-             let song = results[i].attributes
-             let li = `
+    AV.init({
+        appId: APP_ID,
+        appKey: APP_KEY
+    });
+    let $olSongs = $('ol#songs')
+    var query = new AV.Query('Song');
+    query.find().then(function (results) {
+        for (var i = 0; i < results.length; i++) {
+            let song = results[i].attributes
+            let li = `
         <li>
             <h3>${song.name}</h3>
             <P><i class="#icon-sq"></i>${song.singer}</P>
             <div class="playButton"></div>
         </li>`
-             $olSongs.append(li)
-         }
-     })
-     let timer = null
-     $('input#search').on('input', function (e) {
-         
-         $('#searchResult').empty()
-         let $input = $(e.currentTarget)
-         $('.holder').addClass('active')
-         $('.close').addClass('active')
-         $('.hotlist').addClass('active')
-         let value = $input.val().trim()
-         if (value === '') {
-             $('.holder').removeClass('active')
-             $('.close').removeClass('active')
-             $('.hotlist').removeClass('active')
-              $('#searchResult').empty()
-             return
-         }
-         if (timer) { clearTimeout(timer) }
-         timer = setTimeout(function () {
-             timer = null
-             var query2 = new AV.Query('Song');
-             query2.contains('name', value);
-             var query1 = new AV.Query('Song');
-             query1.contains('singer',value);
-             var query = AV.Query.or(query1,query2)
-             query.find().then(function (results) {
-                 // $('#search').on('input', function (e) {
-                  //    $('#searchResult').empty()
-                 // })
-                 if (results.length === 0) {
-                     $('#searchResult').html('搜索不到')
-                 } else {
-                     for (var i = 0; i < results.length; i++) {
-                         let song = results[i].attributes
-                         let li = `
+            $olSongs.append(li)
+        }
+    })
+    
+    let timer = null
+
+    $('input#search').on('input', function (e) {
+        if (timer) { clearTimeout(timer) }
+        
+        $('#searchResult').empty()
+        let $input = $(e.currentTarget)
+        $('.holder').addClass('active')
+        $('.close').addClass('active')
+        $('.hotlist').addClass('active')
+        //$('.search-content').addClass('active')
+        let value = $input.val().trim()
+        //console.log(6)
+        //console.log(timer)
+
+        if (value === '') {
+            $('.holder').removeClass('active')
+            $('.close').removeClass('active')
+            $('.hotlist').removeClass('active')
+            $('.search-content').removeClass('active')
+            $('#searchResult').empty()
+            return
+        }
+        //console.log(3)
+        //console.log(timer)
+        timer = setTimeout(function () {
+//console.log(8)
+//console.log(timer)
+           // timer = null
+            var query2 = new AV.Query('Song');
+            query2.contains('name', value);
+            var query1 = new AV.Query('Song');
+            query1.contains('singer', value);
+            var query = AV.Query.or(query1, query2)
+//console.log(5)
+//console.log(timer)
+            query.find().then(function (results) {
+                // $('#search').on('input', function (e) {
+                //   $('#searchResult').empty()
+                // })
+ //console.log(4)
+                if (results.length === 0) {
+                    $('.search-content').addClass('active')
+                    $('.search-content').html('搜索' + '' + value + '')
+                } else {
+                    for (var i = 0; i < results.length; i++) {
+                        let song = results[i].attributes
+                        let li = `
                 <li data-id="${results[i].id}">
                 <a href="./song.html?id=${results[i].id}">${song.name} - ${song.singer}</a>
-                </li>
-                    `
-                         $('#searchResult').append(li)
-                         console.log(1)
-                     }
-                 }
-             }, 500)
-         })
+        </li>
+        ` 
+        $('#searchResult').append(li)
+                    }
+                }
+            }, 500)
+        })
+    })
 
-     })
-     $('.jiandan').on('keydown', function (e) {
-
-         if (e.keyCode === 13) {
-             $('.jiandan').blur()
-             show()
-         }
-     })
-     
+//console.log(timer)
 
 </script>
+
 </html>

@@ -438,7 +438,7 @@ input{
 .search-content{
     border-bottom:1px solid #e8e8e8;
 }
-.search-content h3{
+.search-content {
     position:relative;
     height:50px;
     margin-left:10px;
@@ -447,9 +447,21 @@ input{
     line-height: 50px;
     color:#507daf;
 }
-
-.search-content h3::after{
+.search-content{
+    display: none;
+}
+.search-content.active{
+    display: block;
+}
+.search-content::after{
     border-bottom:1px solid rgba(0,0,0,.1);
+}
+
+#searchResult>li{
+    display: flex;
+    align-items:center;
+    height:45px;
+    padding:10px;
 }
 
 .default{
