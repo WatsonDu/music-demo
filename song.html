@@ -9,6 +9,7 @@
 </head>
 <link rel="stylesheet" href="song.css">
 <link rel="stylesheet" href="reset.css">
+
 <body>
     <div class="page">
         <div class="mysong">
@@ -16,17 +17,95 @@
             <div class="mysong-wrap">
                 <div class="mysong-disc">
                     <div class="mysong-turn">
-                        <div class="mysong-img">
+                        <div class="mysong-img spin-run">
                             <img class="img" src="https://i.loli.net/2017/09/04/59ac4a917e603.jpg" alt="">
                         </div>
                     </div>
-
+                  <div class="playbutton"></div>
                 </div>
             </div>
-            <div class="mysong-info"></div>
-            <div class="mysong-foot"></div>
+            <div class="mysong-info">
+                <h2>
+                    <span id="songName" class="songname"></span>
+                    <span class="space">-</span>
+                    <span id="songSinger" class="songsinger"></span>
+                </h2>
+               <div class="lrc">
+                   <div class="mysong-scroll"></div>
+                   <div class="mysong-liner"></div>
+               </div>
+            </div>
+            <div class="mysong-foot">
+                <div class="foot-wrap">
+                    <a href="" class="open">打 开</a>
+                    <a href="" class="down">下 载</a>
+                </div>
+            </div>
         </div>
         
     </div>
 </body>
+<script src="./vendors/jquery.min.js"></script>
+<script src="./vendors/av-min.js"></script>
+<script>
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+</script>
+<script>
+
+    var APP_ID = 'oysuL2dORvTNIna81kWEojQM-gzGzoHsz';
+    var APP_KEY = 'RuAWNvvWTsPo21IHHUViSmgV';
+
+    AV.init({
+        appId: APP_ID,
+        appKey: APP_KEY
+    });
+    console.log(4)
+    var id = getParameterByName('id');
+    var query = new AV.Query('Song');
+    query.get(id).then(function (song){
+        var {url,lyric} = song.attributes
+        var video = document.createElement('video')
+        video.src = url
+        video.play()
+        var array = []
+        var parts = lyric.split('\n')
+console.log(3)
+        parts.forEach(function(string,index){
+            var xxx = string.split(']')
+            xxx[0] = xxx[0].substring(1)
+            var regex = /(\d+):([\d.]+)/
+            var matches = xxx[0].match(regex)
+            var minute = +matches[1]
+            var seconds = +matches[2]
+            console.log(5)
+            array.push({
+                time:minute*60+seconds,
+                lyric:xxx[1]
+            })
+        })
+        console.log(6)
+        setInterval(function(){
+            var current = video.currentTime
+            for(var i=0;i<array.length;i++){
+                console.log(8)
+                if(i === array.length -1){
+                    console.log(array[i].lyric)
+                }else if(array[i].time <= current && array[i+1].time >current){
+                    console.log(array[i].lyric)
+                    break;
+                }
+            }
+        },500)
+        console.log(7)
+    })
+    console.log(2)
+</script>
 </html>
