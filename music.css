@@ -179,7 +179,7 @@
     position:relative;
     border-bottom:1px solid #e8e8e8;
 }
-.list>li>h3{
+.list>li>a>h3{
     padding:6px 0;
     font-size:17px;
     overflow: hidden;
@@ -187,17 +187,17 @@
     margin-right: 30px;
     margin-bottom: 2px;
 }
-.list>li>p{
+.list>li>a>p{
     font-size:12px;
     color:#888;
     overflow: hidden;
     
 }
-.list>li>h3>small{
+.list>li>a>h3>small{
     font-size:17px;
     color:#888;
 }
-.songs>.list>li>p>i{
+.songs>.list>li>a>p>i{
     display: inline-block;
     width: 12px;
     height:8px;
@@ -207,7 +207,7 @@
     background-size: 166px 97px;
 }
 
-.songs > .list > li >.playButton{
+.songs > .list > li >a>.playButton{
     display: inline-block;
     width: 22px;
     height: 22px;
@@ -283,15 +283,16 @@
     transform-origin:left top;
     transform:scale(0.91)
 }
-.rege{
+#hotsongs>li{
     position:relative;
     padding-left:10px;
     
 }
-.rege>.bangdan{
+#hotsongs>li>a>.bangdan{
     display: flex;
 }
-.rege>.bangdan>.number-top{
+
+#hotsongs>li:nth-child(-n+3)>a>.bangdan>.number{
     color:#df3436;
 }
 .number{
@@ -301,19 +302,19 @@
     font-size:17px;
     color:#999;
 }
-.bangdan>.geming{
+#hotsongs>li>a>.bangdan>.geming{
     flex:1 1 auto;
     padding:6px 0;
     width:0;
 }
-.bangdan>.geming>h3{
+#hotsongs>li>a>.bangdan>.geming>h3{
     font-size:17px;
 }
 .bangdan>.geming>h3>small{
     color:#888;
     margin-left:4px;
 }
-.bangdan>.geming>p{
+#hotsongs>li>a>.bangdan>.geming>p{
     font-size:12px;
     color:#888;
 

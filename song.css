@@ -240,6 +240,7 @@
 }
 .lrc{
     margin-top:14px;
+    overflow:hidden;
 }
 .lrc>.mysong-scroll{
     line-height:1.5;
@@ -250,10 +251,13 @@
     color:hsla(0,0%,100%,.6);
 }
 @media screen and (min-width: 375px) {
-    .mysong-scroll{
+    .lrc>.mysong-scroll{
         height:92px;
         font-size:16px;
     }
+}
+.lrc>.mysong-scroll>.mysong-liner{
+    transition:transform 0.3s;
 }
 .mysong-foot{
     position:absolute;
@@ -288,6 +292,7 @@
     border-radius:4px;
     font-size:15px;
     margin-left:12px;
+    letter-spacing:1vw;
 }
 @media screen and (min-width: 360px){
     .mysong-foot>.foot-wrap>a{
