@@ -147,7 +147,16 @@
     </div>
     <ol id="hotsongs">
         <div class="rege">
-
+           <div class="bangdan">
+             <div class="number number-top">01</div>
+             <div class="geming">
+             <h3>如果我是一首歌<small>(If I were a song)</small></h3>
+             <P><i class="#icon-sq"></i>岑宁儿-如果我是一首歌</P>
+           </div>
+           <div class="action">
+             <div class="playButton"></div>
+           </div>
+           </div>
 
         </div>
         </ol>
@@ -215,24 +224,8 @@
         $('.tab-content').children().eq(index)
             .addClass('active').siblings().removeClass('active')
     })
-    // input的点击
-    //显示结果
-
-    //清空按钮
 
 
-    var close = function () {
-        $('#search').val()
-        $('.close').removeClass('active')
-        $('#searchResult').empty()
-        $('.default').show()
-        $('.search-content').removeClass('active')
-        $('.hotlist').removeClass('active')
-        $('#searchResult')[0].value = ''
-    }
-    $('.close').on('click', function () {
-        return (close())
-    })
 
 
 </script>
@@ -261,7 +254,6 @@
             $olSongs.append(li)
         }
     })
-    console.log(1)
 
 
     //热门歌曲
@@ -302,56 +294,67 @@
            </div>
             </a>
            </li>`;
-                $olhotSongs.append(li)
             }
         }
     })
+    //清空按钮
+    var close = function () {
+        $('#search').val('')
+        $('.close').removeClass('active')
+        $('#searchResult').empty()
+        $('.default').show()
+        $('.holder').removeClass('active')
+        $('.search-content').hide()
+        $('.hotlist').removeClass('active')
+       // $('#searchResult')[0].value = ''
 
+    }
+    $('.close').on('click', function () {
+        return (close())
+    })
+
+//函数节流
     let timer = null
-    
     $('input#search').on('input', function (e) {
         if (timer) { clearTimeout(timer) }
-        let $input = $(e.currentTarget)
-        let value = $input.val().trim()
-        if (value === '') {
-                    $('.holder').removeClass('active')
-                    $('.close').removeClass('active')
-                    $('.hotlist').removeClass('active')
-                    $('.search-content').removeClass('active')
-                    $('#searchResult').empty()
-                    return
-                }
-                $('#searchResult').empty()
-                $('.holder').addClass('active')
-                $('.close').addClass('active')
-                $('.hotlist').addClass('active')
-                $('.search-content').addClass('active')
-               // $('.search-content').text('搜索'+'value'+'');
         timer = setTimeout(function () {
              timer = null
+            let $input = $(e.currentTarget)
+            let value = $input.val().trim()
+            if(value ===''){return(close())}
             var query2 = new AV.Query('Song');
             query2.contains('name', value);
             var query1 = new AV.Query('Song');
             query1.contains('singer', value);
             var query = AV.Query.or(query1, query2)
             query.find().then(function (results) {
+                $('#searchResult').empty()
+                $('.close').addClass('active')
+                $('.hotlist').addClass('active')
+                $('.holder').addClass('active')
+                $('.search-content').html(`<h3>搜索"${value}"</h3>`).show()
                 if (results.length === 0) {
-                    $('.search-content').addClass('active')
-                    $('.search-content').html('搜索' + '' + value + '')
+                    //$('.search-content').hide()
+                    $('#searchResult').html(`<h3>搜索不到</h3>`)
+
                 } else {
                     for (var i = 0; i < results.length; i++) {
                         let song = results[i].attributes
                         let li = `
                 <li data-id="${results[i].id}">
+                <i class="tubiao"></i>
                 <a href="./song.html?id=${results[i].id}">${song.name} - ${song.singer}</a>
         </li>
         `;
-         $('#searchResult').append(li)
+                        $('#searchResult').append(li)
                     }
-                }
-            }, 500)
+                    if(value===''){
+                        return(close())
+                    }
+                }})
+
+        }, 500)
         })
-    })
 
 
 </script>

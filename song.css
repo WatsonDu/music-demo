@@ -197,8 +197,22 @@
     background-size:contain;
     display:block;
 }
+.closebutton>.closeicon{
+    width:60px;
+    height:60px;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    z-index:10;
+     display: none;
+    fill:white;
+}
 .playbutton.active{
     display: none;
+}
+.closebutton.active>.closeicon{
+    display: block;
 }
 @media screen and (min-width: 360px){
     .playbutton{
@@ -258,6 +272,9 @@
 }
 .lrc>.mysong-scroll>.mysong-liner{
     transition:transform 0.3s;
+}
+.lrc>.mysong-scroll>.mysong-liner>p.active{
+    color:#fff;
 }
 .mysong-foot{
     position:absolute;

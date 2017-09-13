@@ -22,14 +22,15 @@
                         </div>
                     </div>
                   <div class="playbutton"></div>
+                    <div class="closebutton">
+                     <svg class="closeicon">
+                         <use xlink:href="#icon-zanting"></use>
+                     </svg>
+                    </div>
                 </div>
             </div>
             <div class="mysong-info">
-                <h2>
-                    <span id="songName" class="songname"></span>
-                    <span class="space">-</span>
-                    <span id="songSinger" class="songsinger"></span>
-                </h2>
+                <h2></h2>
                <div class="lrc">
                    <div class="mysong-scroll">
                        <div class="mysong-liner"></div>
@@ -49,6 +50,7 @@
 </body>
 <script src="./vendors/jquery.min.js"></script>
 <script src="./vendors/av-min.js"></script>
+<script src="//at.alicdn.com/t/font_395713_w79yrvnlvea5rk9.js"></script>
 <script>
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
@@ -72,29 +74,35 @@
     var id = getParameterByName('id');
     var query = new AV.Query('Song');
     query.get(id).then(function (song) {
-        var {url, lyric} = song.attributes
-        var singer = song.attributes.singer
-        var name = song.attributes.name
+        var {url, lyric,name,singer,cover} = song.attributes
+        var h2 = `<h2>${name}-${singer}</h2>`
+        $('.mysong-info>h2').append(h2)
         var images = song.attributes.cover
+        var img = `<img class="img" src="${images}" alt>`
+        $('.mysong-img').append(img)
+        $('.mysong-bg').css('background-image',`url(${images})`)
         var video = document.createElement('video')
         video.src = url
-        video.pause()
-        video.onplay = function(){
+        $('body').append(video)
 
+        $('.playbutton').on('click',function(){
             $('.mysong-disc').addClass('playing')
             $('.playbutton').addClass('active')
-        }
-        $('.mysong-disc').on('click',function(){
-            $('.mysong-disc').removeClass('playing')
-            $('.playbutton').removeClass('active')
+            $('.closebutton').addClass('active')
             video.play()
         })
-        $('.playbutton').on('click',function(){
+        $('.closebutton').on('click',function(){
             video.pause()
             $('.mysong-disc').removeClass('playing')
             $('.playbutton').removeClass('active')
-
+            $('.closebutton').removeClass('active')
         })
+        video.loop = false
+        video.addEventListener('ended',function(){
+            $('.mysong-disc').removeClass('playing')
+            $('.playbutton').removeClass('active')
+            $('.closebutton').removeClass('active')
+        },false)
         let array =[]
         let parts = lyric.split('\n')
         parts.forEach(function(string,index){
@@ -110,32 +118,35 @@
 
 
 
+        var $lyric = $('.mysong-info>.lrc>.mysong-scroll>.mysong-liner')
+        array.map(function(song){
+            if(!song){return}
+            var $p = $('<p/>')
+            $p.attr('data-time',song.time).text(song.lyric)
+            $p.appendTo($('.mysong-scroll').children('.mysong-liner'))
+
+        })
+        console.log(1)
         setInterval(function(){
-         let current = video.currentTime
+            let $lines = $('.mysong-liner >p')
+            let current = video.currentTime
             var $whileliners
-            var $lyric = $('.mysong-info>.lrc>.mysong-scroll>.mysong-liner')
-            var $name = $('.mysong-info>.songname')
-            array.map(function(song){
-                if(!song){return}
-                var $p = $('<p/>')
-                $p.attr('data-time',song.time).text(song.lyric)
-                $p.appendTo($('.mysong-scroll').children('.mysong-liner'))
-                $
-            })
-            for(var i = 0;i<array.length;i++){
-               if(i ===array,length -1){
-                   return
-               }else if(array[i].time <= current && array[i+1].time > current){
-                 break;
+            for(var i = 0;i<$lines.length;i++){
+                let currentLineTime = $lines.eq(i).attr('data-time')
+                let nextLineTime = $lines.eq(i+1).attr('data-time')
+              if($lines.eq(i+1).length !==0 && currentLineTime < current && nextLineTime >current){
+                 $whileliners = $lines.eq(i)
              }
+                if($whileliners){
+                  $whileliners.addClass('active').prev().removeClass('active')
+                    let Top = $whileliners.offset().top
+                    let linersTop = $('.mysong-liner').offset().top
+                    let delta = Math.floor(Top - linersTop - $('.mysong-scroll').height()/4)
+                    $('.mysong-liner').css('transform',`translateY(-${delta}px)`)
             }
-            if($whileliners){
-                let top = $whileliners.offset().top
-                let linersTop = $('.mysong-liner').offset().top
-                let delta = top - linersTop - $('.mysong-scroll').height()/4
-                $('.mysong-liner').css('transform',`translateY(-${delta}px)`)
             }
         },300)
+        console.log(2)
     })
 </script>
 </html>
