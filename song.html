@@ -81,24 +81,24 @@
         var img = `<img class="img" src="${images}" alt>`
         $('.mysong-img').append(img)
         $('.mysong-bg').css('background-image',`url(${images})`)
-        var video = document.createElement('video')
-        video.src = url
-        $('body').append(video)
+        var audio = document.createElement('audio')
+        audio.src = url
+        $('body').append(audio)
 
         $('.playbutton').on('click',function(){
             $('.mysong-disc').addClass('playing')
             $('.playbutton').addClass('active')
             $('.closebutton').addClass('active')
-            video.play()
+            audio.play()
         })
         $('.closebutton').on('click',function(){
-            video.pause()
+            audio.pause()
             $('.mysong-disc').removeClass('playing')
             $('.playbutton').removeClass('active')
             $('.closebutton').removeClass('active')
         })
-        video.loop = false
-        video.addEventListener('ended',function(){
+        audio.loop = false
+        audio.addEventListener('ended',function(){
             $('.mysong-disc').removeClass('playing')
             $('.playbutton').removeClass('active')
             $('.closebutton').removeClass('active')
@@ -129,7 +129,7 @@
         console.log(1)
         setInterval(function(){
             let $lines = $('.mysong-liner >p')
-            let current = video.currentTime
+            let current = audio.currentTime
             var $whileliners
             for(var i = 0;i<$lines.length;i++){
                 let currentLineTime = $lines.eq(i).attr('data-time')
