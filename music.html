@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>网易云音乐</title>
 </head>
-<link rel="stylesheet" href="reset.css">
-<link rel="stylesheet" href="music.css">
+<link rel="stylesheet" href="./dist/reset.css">
+<link rel="stylesheet" href="./dist/music.css">
 <link rel="stylesheet" href="//at.alicdn.com/t/font_395713_wt5r3srh7l5o2yb9.css">
 
 <body>
@@ -205,19 +205,12 @@
 <script>
     // topbar的切换
     $('.tabs').on('click', 'li', function (e) {
-
         let $li = $(e.currentTarget)
-
         let index = $li.index()
-
         $li.addClass('active').siblings().removeClass('active')
         $('.tab-content').children().eq(index)
             .addClass('active').siblings().removeClass('active')
     })
-
-
-
-
 </script>
 <script>
     var APP_ID = 'oysuL2dORvTNIna81kWEojQM-gzGzoHsz';
@@ -297,19 +290,19 @@
         $('.holder').removeClass('active')
         $('.search-content').hide()
         $('.hotlist').removeClass('active')
-       // $('#searchResult')[0].value = ''
+        // $('#searchResult')[0].value = ''
 
     }
     $('.close').on('click', function () {
         return (close())
     })
 
-//函数节流
+    //函数节流
     let timer = null
     $('input#search').on('input', function (e) {
         if (timer) { clearTimeout(timer) }
         timer = setTimeout(function () {
-             timer = null
+            timer = null
             let $input = $(e.currentTarget)
             let value = $input.val().trim()
             if(value ===''){return(close())}
@@ -345,8 +338,7 @@
                 }})
 
         }, 500)
-        })
-
+    })
 
 </script>
 

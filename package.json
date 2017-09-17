@@ -1,7 +1,6 @@
 {
   "name": "music-demo",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +8,32 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-config-airbnb-base": "^12.0.0",
     "jquery": "^3.2.1",
     "leancloud-storage": "^3.1.1"
-  }
+  },
+  "devDependencies": {
+    "eslint": "^4.7.0",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-config-google": "^0.9.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.3.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "grunt-postcss": "^0.9.0",
+    "gulp-autoprefixer": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WatsonDu/music-demo.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/WatsonDu/music-demo/issues"
+  },
+  "homepage": "https://github.com/WatsonDu/music-demo#readme",
+  "description": ""
 }
