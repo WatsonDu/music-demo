@@ -6,22 +6,41 @@ AV.init({
     appKey: APP_KEY
 });
 //首页推荐歌曲
-let $olSongs = $('ol#songs')
-var query = new AV.Query('Song');
-query.find().then(function (results) {
-    for (var i = 0; i < results.length; i++) {
-        let song = results[i].attributes
-        let li = `
+
+function loadSongs(){
+     function template(song){
+         return `
         <li>
         <a href="./song.html?id=${results[i].id}">
         <h3>${song.name}</h3>
             <P><i class="#icon-sq"></i>${song.singer}</P>
             <div class="playButton"></div>
         </a>
-        </li>`
-        $olSongs.append(li)
+        </li>
+       `
     }
-})
+
+    function getSongs() {
+        var query = new AV.Query('Song');
+        return  query.find()
+    }
+    console.log(1)
+   function fillSongs(results) {
+       for (var i = 0; i < results.length; i++) {
+           console.log(4)
+           let song = results[i].attributes
+           console.log(7)
+           let li = template(song)
+           console.log(5)
+           $('ol#songs').append(li)
+           console.log(6)
+       }
+   }
+   getSongs().then(fillSongs)
+console.log(2)
+}
+loadSongs()
+
 
 
 //热门歌曲
