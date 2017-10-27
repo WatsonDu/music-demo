@@ -30,7 +30,7 @@ function loadSongs(){
            console.log(4)
            let song = results[i].attributes
            console.log(7)
-           let li = template(song)
+           let li = template(songs)
            console.log(5)
            $('ol#songs').append(li)
            console.log(6)
