@@ -32,6 +32,7 @@ function loadSongs(){
            console.log(7)
            let li = template(song)
            console.log(5)
+           console.log(song)
            $('ol#songs').append(li)
            console.log(6)
        }
