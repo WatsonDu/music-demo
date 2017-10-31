@@ -8,10 +8,10 @@ AV.init({
 //首页推荐歌曲
 
 function loadSongs(){
-     function template(song){
+     function template(song,id){
          return `
         <li>
-        <a href="./song.html?id=${results[i].id}">
+        <a href="./song.html?id=${id}">
         <h3>${song.name}</h3>
             <P><i class="#icon-sq"></i>${song.singer}</P>
             <div class="playButton"></div>
@@ -30,7 +30,7 @@ function loadSongs(){
            console.log(4)
            let song = results[i].attributes
            console.log(7)
-           let li = template(song)
+           let li = template(song,results[i].id)
           
            $('ol#songs').append(li)
            
